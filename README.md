@@ -1,11 +1,11 @@
 ![Native and js screenshots](images/spaceship.png)
 
-What is it for?
----------------
+# What is it for?
 
 Use a web browser to easily visualize data from your C++ program and control it’s behaviour. libgateY allows you to add variables shared between the native C++ code and the javascript code. Here's an example:
 
 ##### C++
+
 ```c++
 gatey::global = std::make_shared<gatey::GateY>();
 
@@ -25,6 +25,7 @@ while (true) {
 ```
 
 ##### Javascirpt
+
 ```javascript
 $(document).ready(function() {
     gatey.global = new gatey.GateY('ws://127.0.0.1:9000');
@@ -44,25 +45,22 @@ $(document).ready(function() {
 });
 ```
 
-Who is it for?
---------------
+# Who is it for?
 
 + You have a console application and want to visualize some data it’s producing at runtime. 
 + You have a game and don’t want to write an ingame gui to control it’s behaviour. 
 + You found a bug and need to graph the value of a variable to get a better understanding of the faulty behaviour.
 
-What does it do?
-----------------
+# What does it do?
 
 LibGateY helps you send data structures over WebSockets from your C++ program to the web browser and the other way. It can send and receive a large amount of C++ standard types by default. For example `std::map<std::string, std::tuple<float, float, float>>` will automatically be converted to a JSON object of the form `{ key0: [x, y, z], key1: [x, y, z] }` The serialization machinery can be extended to support your own types.
 
-How do I use it?
-----------------
+# How do I use it?
 
 LibGateY tries to be as simple to deploy as possible, so it consists of only one .hpp and one .cpp file. It doesn’t have any dependecies. Just copy it into your project.
 
-Serialization
--------------
+## Serialization
+
 To send data structures from C++ to JS libGateY uses JSON. It can serialize the following types by default: int, float, double, char, std::string and std::vector<T>, std::map<std::string, T>, std::array<T, N> for any type T that is serializable. Here's an example of a custom type serializer:
 
 ```C++
@@ -85,10 +83,10 @@ namespace gatey { namespace serialize {
 }}
 ```
 
-Spaceship example
------------------
+### Spaceship example
 
 ##### C++
+
 ```C++
 gatey::global = std::make_shared<gatey::GateY>();
 
@@ -143,6 +141,7 @@ while (true){
 ```
 
 ##### Javascript
+
 ```JavaScript
 var gPosition = new gatey.ReadVariable('position', 0);
 var gVelocity = new gatey.ReadVariable('velocity', 0);
