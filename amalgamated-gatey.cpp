@@ -7927,7 +7927,7 @@ libwebsocket_rx_flow_control(struct libwebsocket *wsi, int enable)
 		return 0;
 
 	lwsl_info("libwebsocket_rx_flow_control(0x%p, %d)\n", wsi, enable);
-	wsi->u.ws.rxflow_change_to = LWS_RXFLOW_PENDING_CHANGE | !!enable;
+	wsi->u.ws.rxflow_change_to = LWS_RXFLOW_PENDING_CHANGE | (unsigned int)!!enable;
 
 	return 0;
 }
