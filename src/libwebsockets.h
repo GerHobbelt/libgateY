@@ -34,7 +34,6 @@
 #define LIBWEBSOCKET_H_3060898B846849FF9F88F5DB59B5950C
 
 #ifdef __cplusplus
-extern "C" {
 #include <cstddef>
 #endif
 	
@@ -90,6 +89,10 @@ extern "C" {
 
 #define CONTEXT_PORT_NO_LISTEN -1
 #define MAX_MUX_RECURSION 2
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 enum lws_log_levels {
 	LLL_ERR = 1 << 0,
